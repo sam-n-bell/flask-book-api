@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request, Response
 from bookapp.books.schema.book import BookSchema
-from bookapp.books.model.book import BookModel
 from bookapp import db
 from marshmallow.exceptions import ValidationError
 
