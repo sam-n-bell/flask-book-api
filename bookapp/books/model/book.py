@@ -7,6 +7,7 @@ class BookModel(db.Model):
     title = db.Column(db.String(100), nullable=False)
     pages = db.Column(db.Integer, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('authors.author_id'), nullable=False)
+    publisher_id = db.Column(db.Integer, db.ForeignKey('publishers.publisher_id'), nullable=False)
     year_published = db.Column(db.Integer, nullable=False)
     
     @classmethod 

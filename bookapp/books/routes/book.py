@@ -9,8 +9,7 @@ book_schema = BookSchema()
 @books.route('/books', methods=['POST'])
 def post_book():
     try:
-        book = BookSchema().load(request.get_json(), session=db)
-        print(book)
+        book = book_schema.load(request.get_json(), session=db)
         book.save_to_db()
         return Response(None, 201)
     except ValidationError as e:
