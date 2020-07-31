@@ -13,16 +13,14 @@ def create_app(config=None):
     app = Flask(__name__)
     app.config.from_object(DevelopmentConfig())
 
+    db.__init__(app)
+    ma.__init__(app)
+    migrate.__init__(app, db) # putting this below blueprints didn't detect tables for some reason
+
     from bookapp.books.routes.book import books
     from bookapp.authors.routes.author import authors
     app.register_blueprint(books, url_prefix=None)
     app.register_blueprint(authors, url_prefix=None)
 
-    # from bookapp.books.resources.book import BooksApi
-    # app.add_resource(BooksApi, '/books')
-
-    db.__init__(app)
-    ma.__init__(app)
-    migrate.__init__(app, db)
 
     return app
